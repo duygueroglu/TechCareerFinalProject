@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+    <!-- external css -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Jquery ui  and js    -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- react libraries -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+
+<title>Shopping Blog</title>
+</head>
+<body>    
+     <!--modal start register  -->
+    <!-- Modal -->
+    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Register</h5>
+                    <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="index.html">
+                        <div class="form-control">
+                            <label for="name_surname">Name Surname</label> <input type="text" id="name_surname"
+                                name="name_surname" class="form-control" required autofocus>
+                        </div>
+                        <div class="form-control">
+                            <label for="email">Email</label> <input type="email" id="email" name="email"
+                                class="form-control" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="password">Password</label> <input type="password" id="password" name="password"
+                                class="form-control" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="re_password">Password Again</label> <input type="password" id="re_password"
+                                name="re_password" class="form-control" required>
+                        </div>
+                        <div class="mt-3">
+                            <input type="reset" class="btn btn-danger text-uppercase" value="clear">
+                            <input type="button" id="kayitol" class="btn btn-primary text-uppercase" data-bs-dismiss="modal" value="send" onclick="kayit()">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal ends register-->
+    <!-- login start -->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="onSubmitFunction()">
+
+                        <div class="form-control">
+                            <input type="text" id="user_email" name="user_email" placeholder="Enter your email adress.."
+                                class="form-control" autocomplete="current-password">
+                            <span id="validation_email" class="text-danger"></span>
+                        </div>
+                        <div class="form-control">
+                            <input type="password" id="user_password" placeholder="Enter your password.."
+                                name="user_password" class="form-control" autocomplete="current-password">
+                            <span id="validation_password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mt-3">
+                            <input type="reset" class="btn btn-danger text-uppercase" value="clear">
+                            <button id="btnSubmit" type="submit" class="btn btn-primary text-uppercase">Send
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btn_giris">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // formu submit yapmadan önce çalıştıırılacak kodlar
+        function onSubmitFunction() {
+            alert("submitted value 44");
+        }
+    </script>
+    <!-- to-do modal -->
+    <div class="modal fade" id="todolist" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">To-Do List App</h5>
+                    <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div id="todolistId"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="shopping" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Shopping</h5>
+                    <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <img class="card-img-top" src="img/iphone13gold.jpg" onclick="imageAdd()" name="resim" id="resim" style="width: 90%;" alt="">
+                        <div class="card-body">
+                            <h6 class="card-title"><b>Ürün 1</b></h6>
+                            <p id="test"></p>
+                            <p id="fiyat" class="card-text"></p>
+                            <div class="container">
+                                <div class="row">
+                                    <div id="plus_minus"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <img class="card-img-top" src="img/iphone13minired.jpg" onclick="imageAdd()" name="resim" id="resim" style="width: 90%;" alt="">
+                        <div class="card-body">
+                            <h6 class="card-title" ><b>Ürün 2</b></h6>
+                            <p id="test2"></p>
+                            <p id="fiyat2" class="card-text"></p>
+                            <div class="container">
+                                <div class="row">
+                                    <div id="plus_minus2"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <img class="card-img-top" src="img/iphone13pink.jpg" onclick="imageAdd()" name="resim" id="resim" style="width: 90%;" alt="">
+                        <div class="card-body">
+                            <h6 class="card-title" ><b>Ürün 3</b></h6>
+                            <p id="test3"></p>
+                            <p id="fiyat3" class="card-text"></p>
+                            <div class="container">
+                                <div class="row">
+                                    <div id="plus_minus"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <img class="card-img-top" src="img/iphone13promaxblack.jpg" onclick="imageAdd()" name="resim" id="resim" style="width: 90%;" alt="">
+                        <div class="card-body">
+                            <h6 class="card-title" ><b>Ürün 4</b></h6>
+                            <p id="test4"></p>
+                            <p id="fiyat4" class="card-text"></p>
+                            <div class="container">
+                                <div class="row">
+                                    <div id="plus_minus"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" >Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="logo">
+           <h1 class="logo-text">Shopping Page <span> Project</span></h1>
+        </div>
+
+        <i class="fa fa-bars menu-toggle"></i>
+        <ul class="nav" id="menu">
+            <div class="section search">
+                <form action="index.html" method="post">
+                    <input type="text" autocomplete="off" name="searchTags" id="searchTags" class="text-input" placeholder="Search...">
+                </form>
+            </div> 
+            <li><a href="#">Home</a></li> 
+            <li><a href="#">About</a></li>
+            <li><a data-bs-toggle="modal" data-bs-target="#todolist" href="#"><i class="fa fa-th-list text-white mr-3"></i>&nbsp;To-Do List</a></li>
+            <li><a class="cart-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">Shopping</a></li>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <div class="navbar-right">
+                        <span class="cart-items"></span>
+                    </button>
+                </div>
+            </ul> 
+            <li>
+                <a href="#">Member
+                    <i class="fa fa-user"></i>&nbsp;
+                    <i class="fa fa-chevron-down"></i>
+                </a>
+                <ul>
+                    <li><a data-bs-toggle="modal" data-bs-target="#register" id="member1" href="#">Register</a></li> 
+                    <li><a data-bs-toggle="modal" data-bs-target="#login" id="member2" href="#">Login</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    
+    <!-- Page Wrapper -->
+    <div class="page-wrapper">
+            <!--! product list start -->
+        <div class="product-area">
+            <div class="container">
+                <h2 class="product-area-title">Featured Product</h2>
+                <div class="row" id="products-dom">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product">
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--! product list end -->  
+<!--! cart list start  -->
+<div class="offcanvas offcanvas-end" id="offcanvasRight">
+    <div class="offcanvas-header">
+        <h5>Shopping Cart</h5>
+        <button class="btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="shopping-cart">
+            <ul class="cart-list">
+                <li class="cart-list-item">
+                    
+                </li> 
+            </ul>
+            <div class="shopping-cart-bottom">
+                <div class="total">
+                    <div class="total-title">Total Price:</div>
+                    <span class="total-value">$ 0</span>
+                </div>
+                <button class="btn-clear" type="button">Clear</button>
+            </div>
+        </div>
+    </div>
+  </div>   
+  
+    </div>
+
+    <!-- //Page Wrapper -->
+
+    <!-- footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h1 class="logo-text">Contact Me</h1>
+                <p>
+                    I'm developing this page for my frontend bootcamp project.<br> 
+                    Please left me a message for your advices.
+                </p>
+                <!-- div for contact with mail and whatsapp -->
+                <div class="contact">
+                    <span><i class="fas fa-phone"></i><a href="https://wa.me/905363596313" target="_blank">&nbsp; +905363596313</a></span>
+                    <span><i class="fas fa-envelope"></i><a href="mailto:duygueroglu.09@gmail.com" target="_blank">&nbsp; duygueroglu.09@gmail.com</a></span>
+                </div>
+                <!-- div for contact with linkedin, instagram, github -->
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/duygu-eroglu-75428796/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/duygu.eroglu/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/duygueroglu" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-section about">
+            <h2 class="section-title">News About Coming Products</h2>
+            <div class="sidebar">
+                <div class="section topics">
+                    
+                    <ul>
+                        <li><a href="https://www.haberturk.com/iphone-se-3-modeli-tanitildi-3369569-teknoloji" target="_blank">iPhone SE 3</a></li>
+                        <li><a href="https://www.chip.com.tr/haber/samsung-galaxy-s21-fe-5g-on-incelemesi_98114.html" target="_blank">Samsung Galaxy S21 FE 5G</a></li>
+                        <li><a href="https://www.teknoblog.com/samsung-galaxy-a13-5g-ozellikleri/" target="_blank">Samsung Galaxy A13 5G</a></li>
+                        <li><a href="https://www.hurriyet.com.tr/teknoloji/samsung-galaxy-a91-geliyor-cikis-tarihi-ise-41376457" target="_blank">Samsung Galaxy A91</a></li>
+                        <li><a href="https://www.donanimhaber.com/redmi-20x-afisi-ortaya-cikti--131934" target="_blank">Redmi 20X</a></li>
+                        <li><a href="https://www.donanimhaber.com/oppo-reno-6-lite-tanitildi--143982" target="_blank">OPPO Reno 6 Lite</a></li>
+                        <li><a href="https://www.cnnturk.com/teknoloji/samsung-galaxy-a33-5g-piyasaya-girdi" target="_blank">Samsung Galaxy A33</a></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="footer-bottom">Shopping Blog | Designed by Duygu Eroğlu
+        </div>
+
+    </div>
+
+    <!--back to top button with jquery-->
+    <a id="button"></a>
+    <script>
+        jQuery(document).ready(function() {
+         
+          var btn = $('#button');
+       
+          $(window).scroll(function() {
+            if ($(window).scrollTop() > 300) {
+              btn.addClass('show');
+            } else {
+              btn.removeClass('show');
+            }
+          });
+       
+          btn.on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({scrollTop:0}, '300');
+          });
+       
+        });
+        </script>
+        
+    <!--watch widget with jquery-->
+    <a id="digital-clock-btn"> </a>
+    <script>
+        jQuery(document).ready(function() {
+         
+          var btn = $('#digital-clock-btn');
+          btn.on('click', function(e) {
+            function Time() {
+
+                // Creat class and objects
+                var date = new Date();
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                var second = date.getSeconds();
+                var period = "";
+
+                // AM/PM Decision
+                if (hour >= 12) {period = "PM";} 
+                else {period = "AM";}
+
+                // Convert into 12-hour format
+                if (hour == 0) {hour = 12;} 
+                else {
+                    if (hour > 12) hour = hour - 12;
+                }
+
+                hour = update(hour);
+                minute = update(minute);
+                second = update(second);
+
+                // Add elements to div
+                document.getElementById("digital-clock-btn").innerText = hour + ":" + minute + ":" + second + "" + period;
+            
+                // Set Timer to 1 sec (1000 ms)
+                setTimeout(Time, 1000);
+            }
+
+            // AM/PM update
+            function update(t) {
+                if (t < 10) {
+                    return "0" + t;
+                }
+                else {
+                    return t;
+                }
+            }
+            Time();
+            });
+        });
+    </script> 
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Slick Carousel -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <!-- Custom Script -->
+    <script src="template.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js "></script>
+
+
+</body>
+</html>
